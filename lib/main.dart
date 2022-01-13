@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:notify_me_app/app/global_bindings.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "NotifyMe",
+      initialBinding: GlobalBindings(),
+      enableLog: true,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: ThemeData(

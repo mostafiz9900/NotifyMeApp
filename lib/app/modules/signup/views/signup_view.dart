@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:notify_me_app/app/data/core/utils.dart';
 
 import '../controllers/signup_controller.dart';
 import 'package:notify_me_app/app/routes/app_pages.dart';
@@ -90,32 +91,42 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
               ),
               onPressed: () async {
-                // setState(() {
-                //   showSpinner = true;
-                // });
-                try {
-                  print('get email');
-                  final newUser = await _auth.createUserWithEmailAndPassword(
-                      email: email!, password: password!);
-                  print(newUser.user);
-                  print('get email');
-                  if (newUser != null) {
-                    Get.toNamed(Routes.HOME);
+                if (await Utils.checkInternetConnectivity()) {
+// setState(() {
+                  //   showSpinner = true;
+                  // });
+                  try {
+                    print('get email');
+                    // final newUser =
+                    await _auth
+                        .createUserWithEmailAndPassword(
+                            email: email!, password: password!)
+                        .then((value) {
+                      print(value);
+                      Get.offAndToNamed(Routes.VERIFICATION);
+                    });
+                    // print(newUser.user);
+                    // print('get email');
+                    // if (newUser != null || newUser.user!.emailVerified) {
+                    //   Get.toNamed(Routes.VERIFICATION);
+                    // }
+                  } on FirebaseAuthException catch (e) {
+                    print(e.code);
+                    Get.snackbar('Error', '${e.code}');
+                    switch (e.code) {
+                      case "email-already-in-use":
+                        Get.snackbar('Error',
+                            "This Email ID already Associated with Another Account.");
+                        break;
+                    }
                   }
-                } on FirebaseAuthException catch (e) {
-                  // print(e.code);
-                  // Get.snackbar('Error', '${e.code}');
-                  switch (e.code) {
-                    case "email-already-in-use":
-                      Get.snackbar('Error',
-                          "This Email ID already Associated with Another Account.");
-                      break;
-                  }
-                }
 
-                // setState(() {
-                //   showSpinner = false;
-                // });
+                  // setState(() {
+                  //   showSpinner = false;
+                  // });
+                } else {
+                  Get.snackbar('Error', 'Please check Internet');
+                }
               },
             ),
             SizedBox(

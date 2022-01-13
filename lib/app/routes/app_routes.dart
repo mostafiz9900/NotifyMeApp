@@ -7,10 +7,16 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SIGNUP = _Paths.SIGNUP;
   static const SIGNIN = _Paths.SIGNIN;
+  static const VERIFICATION = _Paths.VERIFICATION;
+  static const NOTIFICATION_DETAILS = _Paths.NOTIFICATION_DETAILS;
+  static const VERIFICATION_SUCCESSFUL = _Paths.VERIFICATION_SUCCESSFUL;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
   static const SIGNUP = '/signup';
   static const SIGNIN = '/signin';
+  static const VERIFICATION = '/verification';
+  static const NOTIFICATION_DETAILS = '/notification-details';
+  static const VERIFICATION_SUCCESSFUL = '/verification-successful';
 }
