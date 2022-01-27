@@ -10,6 +10,8 @@ abstract class Routes {
   static const VERIFICATION = _Paths.VERIFICATION;
   static const NOTIFICATION_DETAILS = _Paths.NOTIFICATION_DETAILS;
   static const VERIFICATION_SUCCESSFUL = _Paths.VERIFICATION_SUCCESSFUL;
+  static const PHONE_SIGNIN = _Paths.PHONE_SIGNIN;
+  static const PHONE_SIGNUP = _Paths.PHONE_SIGNUP;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const VERIFICATION = '/verification';
   static const NOTIFICATION_DETAILS = '/notification-details';
   static const VERIFICATION_SUCCESSFUL = '/verification-successful';
+  static const PHONE_SIGNIN = '/phone-signin';
+  static const PHONE_SIGNUP = '/phone-signup';
 }

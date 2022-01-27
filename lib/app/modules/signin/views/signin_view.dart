@@ -204,6 +204,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 //       Get.toNamed(Routes.VERIFICATION);
                 //     },
                 //     child: Text('webView'))
+                ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.PHONE_SIGNIN);
+                    },
+                    child: Text('Phone signin'))
               ],
             ),
           ),

@@ -13,22 +13,24 @@ class SigninController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    authController.getCurrentUser();
+    await authController.getCurrentUser();
     print(authController.currentUserName);
     print('sing cont');
     print(authController.getCurrentUser());
-    if (await authController.currentUserName == null ||
-        await authController.currentUserName == '') {
-      print('in condition');
-      
-    }else{
-      Get.offAllNamed(Routes.HOME);
-    }
+  
   }
 
   @override
   void onReady() {
     super.onReady();
+      if (authController.currentUserName == null ||
+        authController.currentUserName == '') {
+      // Get.toNamed(Routes.SIGNIN);
+      print('if condition');
+    } else {
+      print('in condition else');
+      Get.offAllNamed(Routes.HOME);
+    }
   }
 
   @override

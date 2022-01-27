@@ -21,7 +21,7 @@ class HomeView extends GetView<HomeController> {
             onPressed: () {
               controller.authController.signOutUser();
             },
-            icon: Container()),
+            icon: Icon(Icons.logout)),
       ),
       body: SingleChildScrollView(
         child: Container(

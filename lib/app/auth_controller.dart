@@ -25,16 +25,16 @@ class AuthController extends GetxController {
   void onClose() {}
   Future<String> getCurrentUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String currentUserName = prefs.getString('current_user_name').toString();
-    print(currentUserName);
+    String getName = prefs.getString('current_user_name').toString();
+    print(getName);
     print('current user auth');
-    if (currentUserName != null) {
-      _userName.value = currentUserName;
+    if (getName != null) {
+      _userName.value = getName;
 
       // _userName.value.auth = true;
       // _currentUser.value=currentUser.value;
     } else {
-      _userName.value = '';
+      // _userName.value;
     }
     return _userName.value;
   }
@@ -57,8 +57,8 @@ class AuthController extends GetxController {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.remove('current_user_name');
       // setdbUser(new Userdb());
-      getCurrentUser();
-      Get.toNamed(Routes.SIGNIN);
+    //  await getCurrentUser();
+      // Get.offAllNamed(Routes.SIGNIN);
     } catch (e) {
       print(e);
       Get.snackbar('Error', '${e.hashCode}');

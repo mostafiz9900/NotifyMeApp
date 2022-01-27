@@ -13,7 +13,7 @@ class VerificationController extends GetxController {
   User? user;
   Timer? timer;
   @override
-  void onInit() {
+  void onInit()async {
     super.onInit();
     user = auth.currentUser;
     user!.sendEmailVerification();
